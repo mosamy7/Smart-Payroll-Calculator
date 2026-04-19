@@ -262,6 +262,7 @@ hr {
 footer {
   color: var(--text-dim);
   font-size: 0.9rem;
+  direction: ltr;
 }
 
 @keyframes fadeIn {
