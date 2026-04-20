@@ -22,11 +22,14 @@
 * {
   box-sizing: border-box;
   font-family: "Cairo", sans-serif;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
   text-decoration: none !important;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -44,37 +47,60 @@ body {
 
 .wrapper {
   width: 95%;
-    max-width: 850px;
-    margin: 0 auto;
-    min-height: 100vh;
-    padding: 40px 0 20px 0; /* زودنا الـ padding العلوي لـ 40px عشان الأنيميشن */
-    display: flex;
-    flex-direction: column;
+  max-width: 850px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 40px 0 20px 0; /* زودنا الـ padding العلوي لـ 40px عشان الأنيميشن */
+  display: flex;
+  flex-direction: column;
 }
 
 /* الهيدر العلوي */
 .top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-    padding-top: 10px; /* مساحة أمان إضافية */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-top: 10px; /* مساحة أمان إضافية */
 }
 
 .user-logo {
-  width: 70px; /* تصغير طفيف ليناسب اللاب توب */
+  width: 70px;
   height: 70px;
   border-radius: 50%;
   border: 3px solid var(--primary);
   object-fit: cover;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  /* الأنيميشن الموجود أصلاً */
   animation: floating 3s ease-in-out infinite;
+  /* إضافة الترانزيشن عشان النور يظهر بنعومة */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* تأثير الهوفر على الصورة (نفس تأثير الاسم) */
+.user-logo:hover {
+  /* إضافة توهج خارجي (Glow) بنفس ألوان الاسم */
+  box-shadow:
+    0 0 20px var(--primary),
+    0 0 40px rgba(56, 189, 248, 0.6);
+
+  /* زيادة سطوع الصورة */
+  filter: brightness(1.2);
+
+  /* الحفاظ على الأنيميشن بدون تغيير مكانه */
+  transform: scale(1.05); /* تكبير بسيط جداً لتعزيز التأثير (اختياري) */
 }
 
 @keyframes floating {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); } /* قللنا الحركة لـ 5px عشان الأمان */
+  0%,
+  100% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-10px);
+  } /* قللنا الحركة لـ 5px عشان الأمان */
 }
 
 .theme-btn {
@@ -87,7 +113,8 @@ body {
   font-weight: bold;
 }
 
-.name-link, .name-link:visited {
+.name-link,
+.name-link:visited {
   color: var(--primary) !important;
   font-weight: bold;
   display: inline-block;
@@ -97,7 +124,10 @@ body {
 }
 
 .name-link:hover {
-  text-shadow: 0 0 20px var(--primary), 0 0 20px var(--primary), 0 0 40px rgba(56, 189, 248, 0.8);
+  text-shadow:
+    0 0 20px var(--primary),
+    0 0 20px var(--primary),
+    0 0 40px rgba(56, 189, 248, 0.8);
   filter: brightness(1.4);
   transform: none !important;
 }
@@ -127,14 +157,15 @@ h1 {
 }
 
 .grid-inputs {
-    display: grid;
-    /* التعديل هنا: يخلي كل 2 في صف واحد بشكل ثابت في الشاشات الكبيرة */
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-    width: 100%;
+  display: grid;
+  /* التعديل هنا: يخلي كل 2 في صف واحد بشكل ثابت في الشاشات الكبيرة */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 12px; /* تقليل الارتفاع الداخلي قليلاً */
   border-radius: 10px;
@@ -226,13 +257,27 @@ hr {
   border: none;
 }
 
-.fb:hover { background: #1877f2; }
-.in:hover { background: #0077b5; }
-.wa:hover { background: #25d366; }
-.yt:hover { background: #ff0000; }
-.ig:hover { background: #e4405f; }
-.gh:hover { background: #333; }
-.lt:hover { background: #43e660; }
+.fb:hover {
+  background: #1877f2;
+}
+.in:hover {
+  background: #0077b5;
+}
+.wa:hover {
+  background: #25d366;
+}
+.yt:hover {
+  background: #ff0000;
+}
+.ig:hover {
+  background: #e4405f;
+}
+.gh:hover {
+  background: #333;
+}
+.lt:hover {
+  background: #43e660;
+}
 
 footer {
   color: var(--text-dim);
@@ -242,18 +287,42 @@ footer {
 
 /* معالجة خاصة لشاشات اللاب توب القصيرة لتقليل السكرول الطولي */
 @media (max-height: 850px) {
-  .user-logo { width: 55px; height: 55px; }
-  .wrapper { padding: 5px 0; }
-  h1 { font-size: 1.6rem; }
-  header { margin-bottom: 10px; }
-  .main-card { padding: 15px 25px; }
-  .btn-calculate { padding: 12px; margin-top: 10px; }
-  .footer-section { padding: 10px 0; }
-  .social-links { margin-bottom: 10px; }
+  .user-logo {
+    width: 55px;
+    height: 55px;
+  }
+  .wrapper {
+    padding: 5px 0;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  header {
+    margin-bottom: 10px;
+  }
+  .main-card {
+    padding: 15px 25px;
+  }
+  .btn-calculate {
+    padding: 12px;
+    margin-top: 10px;
+  }
+  .footer-section {
+    padding: 10px 0;
+  }
+  .social-links {
+    margin-bottom: 10px;
+  }
 }
 
 @media (max-width: 600px) {
-  .grid-inputs { grid-template-columns: 1fr; }
-  .main-card { padding: 20px; }
-  .wrapper { padding: 10px; }
+  .grid-inputs {
+    grid-template-columns: 1fr;
+  }
+  .main-card {
+    padding: 20px;
+  }
+  .wrapper {
+    padding: 10px;
+  }
 }
